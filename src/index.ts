@@ -16,13 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/gmail", notificationsRouter)
 
 
-
 mongoose.connect(mongodbUrl).then(() => console.log("Connected to database"))
-
-app.post('/webhook/gmail/push', (req, res) => {
-  console.log("the request body => ", req.body)
-  res.status(200).send("success")
-})
 
 
 app.listen(port, () => {
