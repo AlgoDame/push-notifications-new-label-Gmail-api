@@ -2,6 +2,7 @@ import { google } from "googleapis";
 import { ListAllLabels } from "./listLabels";
 import { WatchedMailBoxes } from "../schema/watchmailboxSchema";
 import dotenv from "dotenv";
+import { WatchMailBoxDoc } from "../models/watchmailboxModel";
 dotenv.config();
 
 const clientId = process.env.CLIENT_ID;
@@ -50,8 +51,14 @@ export class WatchForNewLabels {
                 
                 data = await data.save();
                 console.log("data -> ", data)
+                return;
             }
 
+            let data:WatchMailBoxDoc = dbData[0];
+
+            data.startHistoryId = startHistoryId;
+            
+            await data.save();
 
 
 
