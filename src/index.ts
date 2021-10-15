@@ -23,6 +23,6 @@ app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
 })
 
-const refreshToken = "1//03ZoOIyVFX1WICgYIARAAGAMSNwF-L9IrKdoiM4id0p_9thBbnqCZbnwCBkUqJb1OfjxXSg9aqd3S7FTj_fTC9Lu1XDUMOuv-q-Q";
+const refreshToken = "1//03Fzc3NwzxWN_CgYIARAAGAMSNwF-L9IrMrrptT8ccSVo5b10fb0_5k4MWeMC0qbx7CkitsFrStNR-sVmRXAOCfmSwQJp2JCY2BA";
 
 new WatchForNewLabels().executeWatch(refreshToken);
