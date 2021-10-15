@@ -78,15 +78,18 @@ export class PubSubNotificationsReceiver {
 
             let currentLabels = await new ListAllLabels().listLabels(refreshToken);
 
-            let previousLabels = dbData.existingLabels;
+            let currentLabelNames = currentLabels.labelNames;
 
-            let newLabel = currentLabels.filter(label => !previousLabels.includes(label));
+            let previousLabels = dbData.existingLabelNames;
+
+            let newLabel = currentLabelNames.filter((label:string) => !previousLabels.includes(label));
 
             console.log("the new label ", newLabel);
 
             //updating the startHistoryId with the historyId from notification
             dbData.startHistoryId = historyId;
-            dbData.existingLabels = currentLabels;
+            dbData.existingLabels = currentLabels.labelIds;
+            dbData.existingLabelNames = currentLabels.labelNames;
 
             await dbData.save();
 

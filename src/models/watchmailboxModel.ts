@@ -8,6 +8,8 @@ export interface WatchMailBoxModel extends mongoose.Model<WatchMailBoxDoc> {
 export interface WatchMailBoxDoc extends mongoose.Document {
     refreshToken: string,
     startHistoryId: string,
-    existingLabels: string[]
+    existingLabels: string[],
+    existingLabelNames: string[]
+
     
 }

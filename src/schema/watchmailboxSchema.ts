@@ -5,7 +5,9 @@ import { WatchMailBoxDoc, WatchMailBoxModel } from "../models/watchmailboxModel"
 export const watchMailBoxSchema = new mongoose.Schema({
     refreshToken: {type: String},
     startHistoryId: {type: String},
-    existingLabels: {type: [String]}
+    existingLabels: {type: [String]},
+    existingLabelNames: {type: [String]}
+
 }, {
     timestamps: true,
     collection: 'watchedmailboxes'

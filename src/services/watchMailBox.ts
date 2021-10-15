@@ -21,9 +21,12 @@ export class WatchForNewLabels {
                 refresh_token: refreshToken,
             });
 
-            let labels = await new ListAllLabels().listLabels(refreshToken);
+            let labelObj = await new ListAllLabels().listLabels(refreshToken);
 
-            console.log("labels: ", labels);
+            console.log("labels: ", labelObj);
+
+            let labels = labelObj.labelIds;
+            let labelNames = labelObj.labelNames;
 
             const serverResponse = await gmail.users.watch({
                 userId: "me",
@@ -45,12 +48,13 @@ export class WatchForNewLabels {
                 let data = WatchedMailBoxes.build({
                     refreshToken: refreshToken,
                     startHistoryId: startHistoryId,
-                    existingLabels: labels
+                    existingLabels: labels,
+                    existingLabelNames: labelNames
 
                 })
                 
                 data = await data.save();
-                console.log("data -> ", data)
+                console.log("data -> ", data);
                 return;
             }
 

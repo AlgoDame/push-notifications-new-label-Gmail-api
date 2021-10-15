@@ -15,7 +15,7 @@ const oAuth2Client = new OAuth2({ clientId, clientSecret });
 const gmail = google.gmail({ version: 'v1' });
 
 export class ListAllLabels {
-    public async listLabels(refreshToken: string): Promise<string[]> {
+    public async listLabels(refreshToken: string): Promise<Record<string,any>> {
 
         oAuth2Client.setCredentials({
             refresh_token: refreshToken
@@ -27,7 +27,8 @@ export class ListAllLabels {
         })
 
 
-        let labels: string[] = [];
+        let labelIds: string[] = [];
+        let labelNames: string[] = [];
 
         let data: Record<string, any>[] = []
 
@@ -36,10 +37,17 @@ export class ListAllLabels {
         }
 
         for (const label of data) {
-            labels.push(label.id)
+            labelIds.push(label.id)
+            labelNames.push(label.name)
         }
 
-        return labels;
+        let result = {
+            labelIds: labelIds,
+            labelNames: labelNames
+        }
+
+        return result;
+            
 
 
 
