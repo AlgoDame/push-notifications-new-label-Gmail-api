@@ -7,7 +7,7 @@ dotenv.config();
 
 
 const app = express();
-const port = 5000;
+const port = 7000;
 const mongodbUrl: string = "mongodb://127.0.0.1:27017/gmail-api-project"
 
 
@@ -23,6 +23,6 @@ app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
 })
 
-const refreshToken = "1//03Fzc3NwzxWN_CgYIARAAGAMSNwF-L9IrMrrptT8ccSVo5b10fb0_5k4MWeMC0qbx7CkitsFrStNR-sVmRXAOCfmSwQJp2JCY2BA";
+const refreshToken = "Enter_Your_Refresh_Token";
 
 new WatchForNewLabels().executeWatch(refreshToken);
